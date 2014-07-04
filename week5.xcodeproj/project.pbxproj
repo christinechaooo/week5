@@ -19,6 +19,7 @@
 		773D2B73196675A000257712 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 773D2B5B1966759F00257712 /* UIKit.framework */; };
 		773D2B7B196675A000257712 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 773D2B79196675A000257712 /* InfoPlist.strings */; };
 		773D2B7D196675A000257712 /* week5Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 773D2B7C196675A000257712 /* week5Tests.m */; };
+		773D2B881966874E00257712 /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 773D2B871966874E00257712 /* TabBarViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,8 @@
 		773D2B78196675A000257712 /* week5Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "week5Tests-Info.plist"; sourceTree = "<group>"; };
 		773D2B7A196675A000257712 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		773D2B7C196675A000257712 /* week5Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = week5Tests.m; sourceTree = "<group>"; };
+		773D2B861966874E00257712 /* TabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarViewController.h; sourceTree = "<group>"; };
+		773D2B871966874E00257712 /* TabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +114,8 @@
 				773D2B67196675A000257712 /* AppDelegate.m */,
 				773D2B69196675A000257712 /* Images.xcassets */,
 				773D2B5E1966759F00257712 /* Supporting Files */,
+				773D2B861966874E00257712 /* TabBarViewController.h */,
+				773D2B871966874E00257712 /* TabBarViewController.m */,
 			);
 			path = week5;
 			sourceTree = "<group>";
@@ -240,6 +245,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				773D2B68196675A000257712 /* AppDelegate.m in Sources */,
+				773D2B881966874E00257712 /* TabBarViewController.m in Sources */,
 				773D2B64196675A000257712 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
