@@ -20,6 +20,11 @@
 		773D2B7B196675A000257712 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 773D2B79196675A000257712 /* InfoPlist.strings */; };
 		773D2B7D196675A000257712 /* week5Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 773D2B7C196675A000257712 /* week5Tests.m */; };
 		773D2B881966874E00257712 /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 773D2B871966874E00257712 /* TabBarViewController.m */; };
+		77D5CE60196779BF0023DFFD /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77D5CE5F196779BF0023DFFD /* HomeViewController.m */; };
+		77D5CE63196779CB0023DFFD /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77D5CE62196779CB0023DFFD /* SearchViewController.m */; };
+		77D5CE66196779D70023DFFD /* CreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77D5CE65196779D70023DFFD /* CreateViewController.m */; };
+		77D5CE69196779E20023DFFD /* AccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77D5CE68196779E20023DFFD /* AccountViewController.m */; };
+		77D5CE6C196779EC0023DFFD /* ActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77D5CE6B196779EC0023DFFD /* ActivityViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +56,16 @@
 		773D2B7C196675A000257712 /* week5Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = week5Tests.m; sourceTree = "<group>"; };
 		773D2B861966874E00257712 /* TabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarViewController.h; sourceTree = "<group>"; };
 		773D2B871966874E00257712 /* TabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarViewController.m; sourceTree = "<group>"; };
+		77D5CE5E196779BF0023DFFD /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		77D5CE5F196779BF0023DFFD /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		77D5CE61196779CB0023DFFD /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
+		77D5CE62196779CB0023DFFD /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
+		77D5CE64196779D70023DFFD /* CreateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateViewController.h; sourceTree = "<group>"; };
+		77D5CE65196779D70023DFFD /* CreateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateViewController.m; sourceTree = "<group>"; };
+		77D5CE67196779E20023DFFD /* AccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountViewController.h; sourceTree = "<group>"; };
+		77D5CE68196779E20023DFFD /* AccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountViewController.m; sourceTree = "<group>"; };
+		77D5CE6A196779EC0023DFFD /* ActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityViewController.h; sourceTree = "<group>"; };
+		77D5CE6B196779EC0023DFFD /* ActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +131,16 @@
 				773D2B5E1966759F00257712 /* Supporting Files */,
 				773D2B861966874E00257712 /* TabBarViewController.h */,
 				773D2B871966874E00257712 /* TabBarViewController.m */,
+				77D5CE5E196779BF0023DFFD /* HomeViewController.h */,
+				77D5CE5F196779BF0023DFFD /* HomeViewController.m */,
+				77D5CE61196779CB0023DFFD /* SearchViewController.h */,
+				77D5CE62196779CB0023DFFD /* SearchViewController.m */,
+				77D5CE64196779D70023DFFD /* CreateViewController.h */,
+				77D5CE65196779D70023DFFD /* CreateViewController.m */,
+				77D5CE67196779E20023DFFD /* AccountViewController.h */,
+				77D5CE68196779E20023DFFD /* AccountViewController.m */,
+				77D5CE6A196779EC0023DFFD /* ActivityViewController.h */,
+				77D5CE6B196779EC0023DFFD /* ActivityViewController.m */,
 			);
 			path = week5;
 			sourceTree = "<group>";
@@ -246,7 +271,12 @@
 			files = (
 				773D2B68196675A000257712 /* AppDelegate.m in Sources */,
 				773D2B881966874E00257712 /* TabBarViewController.m in Sources */,
+				77D5CE69196779E20023DFFD /* AccountViewController.m in Sources */,
+				77D5CE66196779D70023DFFD /* CreateViewController.m in Sources */,
+				77D5CE63196779CB0023DFFD /* SearchViewController.m in Sources */,
+				77D5CE6C196779EC0023DFFD /* ActivityViewController.m in Sources */,
 				773D2B64196675A000257712 /* main.m in Sources */,
+				77D5CE60196779BF0023DFFD /* HomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -445,6 +475,7 @@
 				773D2B82196675A000257712 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		773D2B83196675A000257712 /* Build configuration list for PBXNativeTarget "week5Tests" */ = {
 			isa = XCConfigurationList;
@@ -453,6 +484,7 @@
 				773D2B85196675A000257712 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
