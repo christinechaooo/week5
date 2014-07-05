@@ -27,13 +27,18 @@
 {
     [super viewDidLoad];
     
+    UIView *statusBarView=[[UIView alloc] initWithFrame:CGRectMake(0, 0,320, 20)];
+    statusBarView.backgroundColor=[UIColor colorWithRed:51.0/255.0 green:70.0/255.0 blue:93.0/255.0 alpha:1];
+    
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, 524)];
     UIImage *view = [UIImage imageNamed:@"accountView"];
     UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 525)];
     imgView.image = view;
     scrollView.contentSize = imgView.frame.size;
     [scrollView addSubview:imgView];
+    
     [self.view addSubview:scrollView];
+    [self.view addSubview:statusBarView];
 }
 
 - (void)didReceiveMemoryWarning

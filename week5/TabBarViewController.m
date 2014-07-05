@@ -168,8 +168,8 @@ id currentButton;
 
 - (void)tooltipShow {
     [self.view addSubview:self.tooltip];
-    [UIView animateWithDuration:0.7 delay:0 options: UIViewAnimationOptionRepeat | UIViewAnimationOptionAutoreverse animations:^{
-        self.tooltip.center = CGPointMake(self.tooltip.center.x, self.tooltip.center.y - 3);
+    [UIView animateWithDuration:1 delay:0 options: UIViewAnimationOptionCurveEaseOut |  UIViewAnimationOptionRepeat | UIViewAnimationOptionAutoreverse animations:^{
+        self.tooltip.center = CGPointMake(self.tooltip.center.x, self.tooltip.center.y - 5);
     } completion:nil];
 }
 
