@@ -13,6 +13,9 @@
 
 @property(nonatomic, strong) UIView *backgroundRect;
 @property(nonatomic, strong) UIButton *dismissButton;
+@property(nonatomic, strong) NSMutableArray *iconArray;
+@property(nonatomic, strong) NSMutableArray *iconPositions;
+@property(nonatomic, strong) NSArray *iconDelays;
 
 - (void)onDismiss:(id)sender;
 - (void)transitionIn;
@@ -49,8 +52,6 @@
     self.dismissButton.backgroundColor = [UIColor colorWithRed:60.0/255.0 green:77.0/255.0 blue:96.0/255.0 alpha:1];
     [self.dismissButton addTarget:self action:@selector(onDismiss:) forControlEvents:UIControlEventTouchUpInside];
     
-    [self transitionIn];
-    
     [self.dismissButton addSubview:dismissLabel];
     [self.view addSubview:self.backgroundRect];
     
@@ -58,37 +59,75 @@
     
     NSArray *imageLabels = [NSArray arrayWithObjects:@"Text", @"Photo",@"Quote", @"Link", @"Chat", @"Video", nil];
     
+    self.iconDelays = [NSArray arrayWithObjects:[NSNumber numberWithFloat:0.05], [NSNumber numberWithFloat:0], [NSNumber numberWithFloat:0.1], [NSNumber numberWithFloat:0.1], [NSNumber numberWithFloat:0.05], [NSNumber numberWithFloat:0.15], nil];
+    
+    self.iconArray = [[NSMutableArray alloc] init];
+    self.iconPositions = [[NSMutableArray alloc] init];
+    
+    int count = 1;
     for (int i = 0; i < imageNames.count / 3; i++) {
         for (int j = 0; j < imageNames.count / 2; j++) {
-            NSLog(@"%d, %d, %d",i, j, j + i * 3);
+//            NSLog(@"%d, %d, %d",i, j, j + i * 3);
             UIImage *iconImg = [UIImage imageNamed:imageNames[j + i * 3]];
-            UIImageView *iconView = [[UIImageView alloc] initWithFrame:CGRectMake(24 + j * (iconImg.size.width + 24), 161 + i * (iconImg.size.height + 48), iconImg.size.width, iconImg.size.height)];
+            UIImageView *iconView = [[UIImageView alloc] initWithFrame:CGRectMake(24 + j * (iconImg.size.width + 24), 568 + i * (iconImg.size.height + 48), iconImg.size.width, iconImg.size.height)];
             iconView.image = iconImg;
+            iconView.tag = count;
+            count++;
             
             UILabel *iconLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, iconImg.size.height + 3, iconImg.size.width, 22)];
             iconLabel.text = imageLabels[j + i * 3];
             iconLabel.font = [UIFont systemFontOfSize:14];
             iconLabel.textAlignment = NSTextAlignmentCenter;
             iconLabel.textColor = [UIColor whiteColor];
+            
+            [self.iconArray addObject:iconView];
+            [self.iconPositions addObject:[NSValue valueWithCGPoint:CGPointMake(24 + j * (iconImg.size.width + 24), 161 + i * (iconImg.size.height + 48))]];
+            
             [iconView addSubview:iconLabel];
             [self.view addSubview:iconView];
         }
     }
     
     [self.view addSubview:self.dismissButton];
+    
+    [self transitionIn];
 }
 
 - (void)transitionIn {
-    [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+    for (UIImageView *iconView in self.iconArray) {
+//        NSLog(@"%d, %f", iconView.tag, iconView.frame.origin.x);
+        iconView.center = CGPointMake([self.iconPositions[iconView.tag - 1] CGPointValue].x + iconView.frame.size.width / 2, [self.iconPositions[iconView.tag - 1] CGPointValue].y + 500);
+    }
+    
+    for (UIImageView *iconView in self.iconArray) {
+        NSLog(@"%f", [self.iconDelays[iconView.tag - 1] floatValue]);
+        [UIView animateWithDuration:0.6 delay:[self.iconDelays[iconView.tag - 1] floatValue] usingSpringWithDamping:0.7 initialSpringVelocity:1 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            iconView.center = CGPointMake([self.iconPositions[iconView.tag - 1] CGPointValue].x + iconView.frame.size.width / 2, [self.iconPositions[iconView.tag - 1] CGPointValue].y + iconView.frame.size.height / 2);
+        } completion:nil];
+    }
+    
+    [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
         self.backgroundRect.layer.opacity = 0.98;
+        } completion:nil];
+    
+    [UIView animateWithDuration:0.3 delay:0.3 options:UIViewAnimationOptionCurveEaseOut animations:^{
         self.dismissButton.center = CGPointMake(self.dismissButton.frame.size.width / 2, 513 + self.dismissButton.frame.size.height / 2);
     } completion:nil];
 }
 
 - (void)transitionOut {
-    [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-        self.backgroundRect.layer.opacity = 0;
+    for (UIImageView *iconView in self.iconArray) {
+        [UIView animateWithDuration:0.5 delay:[self.iconDelays[iconView.tag - 1] floatValue] options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            iconView.center = CGPointMake([self.iconPositions[iconView.tag - 1] CGPointValue].x + iconView.frame.size.width / 2, [self.iconPositions[iconView.tag - 1] CGPointValue].y   - 400);
+        } completion:nil];
+    }
+    
+    [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
         self.dismissButton.center = CGPointMake(self.dismissButton.frame.size.width / 2, 568 + self.dismissButton.frame.size.height / 2);
+    } completion:nil];
+    
+    [UIView animateWithDuration:0.2 delay:0.5 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        self.backgroundRect.layer.opacity = 0;
     } completion:^(BOOL finished) {
         [self.view removeFromSuperview];
     }];
