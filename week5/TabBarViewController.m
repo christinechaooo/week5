@@ -125,34 +125,40 @@ id currentButton;
 }
 
 - (void)buttonAction:(id)sender {
-    [currentButton setSelected:NO];
-    [sender setSelected:YES];
     
-    currentButton = sender;
     switch ([sender tag]) {
         case 1:
             [self checkTooltipShow];
+            [sender setSelected:YES];
+            currentButton = sender;
             [sender setBackgroundImage:[UIImage imageNamed:@"home"] forState:UIControlStateSelected];
             [self.mainView addSubview:self.homeViewController.view];
             break;
         case 2:
+            [currentButton setSelected:NO];
+            [sender setSelected:YES];
+            currentButton = sender;
             self.isTooltipShow = NO;
             [self tooltipHide];
             [sender setBackgroundImage:[UIImage imageNamed:@"search"] forState:UIControlStateSelected];
             [self.mainView addSubview:self.searchViewController.view];
             break;
         case 3:
-            [self checkTooltipShow];
             [sender setBackgroundImage:[UIImage imageNamed:@"create"] forState:UIControlStateSelected];
-            [self.mainView addSubview:self.createViewController.view];
+            [self.createViewController transitionIn];
+            [self.view addSubview:self.createViewController.view];
             break;
         case 4:
             [self checkTooltipShow];
+            [sender setSelected:YES];
+            currentButton = sender;
             [sender setBackgroundImage:[UIImage imageNamed:@"account"] forState:UIControlStateSelected];
             [self.mainView addSubview:self.accountViewController.view];
             break;
         case 5:
             [self checkTooltipShow];
+            [sender setSelected:YES];
+            currentButton = sender;
             [sender setBackgroundImage:[UIImage imageNamed:@"activity"] forState:UIControlStateSelected];
             [self.mainView addSubview:self.activityViewController.view];
             break;
@@ -160,6 +166,8 @@ id currentButton;
 }
 
 - (void)checkTooltipShow {
+    [currentButton setSelected:NO];
+    
     if(self.isTooltipShow != YES) {
         self.isTooltipShow = YES;
         [self tooltipShow];

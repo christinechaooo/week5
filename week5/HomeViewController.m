@@ -53,7 +53,7 @@
     headerView.userInteractionEnabled = YES;
     
     self.logInView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 568)];
-    self.logInView.backgroundColor = [UIColor colorWithRed:19.0/255.0 green:35.0/255.0 blue:57.0/255.0 alpha:0];
+    self.logInView.backgroundColor = [UIColor colorWithRed:51.0/255.0 green:70.0/255.0 blue:93.0/255.0 alpha:0];
     
     UIImage *logInImg = [UIImage imageNamed:@"logInTF"];
     self.logInTF = [[UIImageView alloc] initWithFrame:CGRectMake(10, 189, 300, 132)];
@@ -96,7 +96,7 @@
     } completion:nil];
     
     [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-        self.logInView.backgroundColor = [UIColor colorWithRed:19.0/255.0 green:35.0/255.0 blue:57.0/255.0 alpha:0.95];
+        self.logInView.backgroundColor = [UIColor colorWithRed:51.0/255.0 green:70.0/255.0 blue:93.0/255.0 alpha:0.98];
         
         self.logInTF.layer.opacity = 1;
     } completion:nil];
@@ -106,7 +106,7 @@
     [self hideKeyboard];
     
     [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-        self.logInView.backgroundColor = [UIColor colorWithRed:19.0/255.0 green:35.0/255.0 blue:57.0/255.0 alpha:0];
+        self.logInView.backgroundColor = [UIColor colorWithRed:51.0/255.0 green:70.0/255.0 blue:93.0/255.0 alpha:0];
         self.logInTF.center = CGPointMake(self.logInTF.frame.origin.x + self.logInTF.frame.size.width / 2, self.logInTF.frame.origin.y + self.logInTF.frame.size.height / 2  + 80);
         self.logInTF.layer.opacity = 0;
     } completion:^(BOOL finished) {

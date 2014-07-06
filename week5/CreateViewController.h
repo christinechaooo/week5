@@ -10,4 +10,6 @@
 
 @interface CreateViewController : UIViewController
 
+- (void)transitionIn;
+
 @end
