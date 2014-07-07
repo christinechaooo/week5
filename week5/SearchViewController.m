@@ -10,6 +10,12 @@
 
 @interface SearchViewController ()
 
+@property(nonatomic, strong)UIImageView *loadingAnimationView;
+@property(nonatomic, strong)UIScrollView *scrollView;
+@property(nonatomic, strong)NSTimer *timer;
+
+- (void)onTimer:(id)sender;
+
 @end
 
 @implementation SearchViewController
@@ -29,14 +35,31 @@
     UIView *statusBarView=[[UIView alloc] initWithFrame:CGRectMake(0, 0,320, 20)];
     statusBarView.backgroundColor=[UIColor colorWithRed:51.0/255.0 green:70.0/255.0 blue:93.0/255.0 alpha:1];
     
-    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, 524)];
+    self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, 524)];
     UIImage *view = [UIImage imageNamed:@"searchView"];
     UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 1237)];
     imgView.image = view;
-    scrollView.contentSize = imgView.frame.size;
-    [scrollView addSubview:imgView];
+    self.scrollView.contentSize = imgView.frame.size;
+    self.scrollView.layer.opacity = 0;
+    [self.scrollView addSubview:imgView];
     
-    [self.view addSubview:scrollView];
+    NSArray *loadingImageNames = @[@"loading-1", @"loading-2", @"loading-3"];
+    NSMutableArray *loadingImages = [[NSMutableArray alloc] init];
+    for (int i = 0; i < loadingImageNames.count; i++) {
+        [loadingImages addObject:[UIImage imageNamed:[loadingImageNames objectAtIndex:i]]];
+    }
+    
+    self.loadingAnimationView = [[UIImageView alloc] initWithFrame:CGRectMake(130, 260, 61, 19)];
+    self.loadingAnimationView.animationImages = loadingImages;
+    self.loadingAnimationView.animationDuration = 0.6;
+    
+    if(!self.timer) {
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(onTimer:) userInfo:nil repeats:NO];
+    }
+         
+    [self.view addSubview:self.loadingAnimationView];
+    [self.loadingAnimationView startAnimating];
+//    [self.view addSubview:self.scrollView];
     [self.view addSubview:statusBarView];
 }
 
@@ -44,6 +67,20 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)onTimer:(id)sender {
+    NSLog(@"!!");
+    [self.view addSubview:self.scrollView];
+    [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        self.scrollView.layer.opacity = 1;
+    } completion:nil];
+    
+    [self.loadingAnimationView removeFromSuperview];
+    [self.loadingAnimationView stopAnimating];
+    
+    [self.timer invalidate];
+    self.timer = nil;
 }
 
 /*

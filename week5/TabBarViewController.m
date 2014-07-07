@@ -62,30 +62,6 @@ id currentButton;
     [tabBarView setBackgroundColor:[UIColor colorWithRed:51.0/255.0 green:66.0/255.0 blue:86.0/255.0 alpha:1]];
     
     CGFloat contentOffSet = 8.0f;
-    /*UIButton *homeButton = [[UIButton alloc] initWithFrame:CGRectMake(contentOffSet, 6, 48, 34)];
-    [homeButton setBackgroundImage:[UIImage imageNamed:@"home"] forState:UIControlStateNormal];
-    contentOffSet += homeButton.frame.size.width + 16;
-    [tabBarView addSubview:homeButton];
-    
-    UIButton *searchButton = [[UIButton alloc] initWithFrame:CGRectMake(contentOffSet, 6, 48, 34)];
-    [searchButton setBackgroundImage:[UIImage imageNamed:@"search"] forState:UIControlStateNormal];
-    contentOffSet += searchButton.frame.size.width + 16;
-    [tabBarView addSubview:searchButton];
-    
-    UIButton *createButton = [[UIButton alloc] initWithFrame:CGRectMake(contentOffSet, 6, 48, 34)];
-    [createButton setBackgroundImage:[UIImage imageNamed:@"create"] forState:UIControlStateNormal];
-    contentOffSet += createButton.frame.size.width + 16;
-    [tabBarView addSubview:createButton];
-    
-    UIButton *accountButton = [[UIButton alloc] initWithFrame:CGRectMake(contentOffSet, 6, 48, 34)];
-    [accountButton setBackgroundImage:[UIImage imageNamed:@"account"] forState:UIControlStateNormal];
-    contentOffSet += accountButton.frame.size.width + 16;
-    [tabBarView addSubview:accountButton];
-    
-    UIButton *trendingButton = [[UIButton alloc] initWithFrame:CGRectMake(contentOffSet, 6, 48, 34)];
-    [trendingButton setBackgroundImage:[UIImage imageNamed:@"trending"] forState:UIControlStateNormal];
-    contentOffSet += trendingButton.frame.size.width + 16;
-    [tabBarView addSubview:trendingButton];*/
     
     NSArray *imageNames = [NSArray arrayWithObjects:@"home-disabled",
                            @"search-disabled",@"create", @"account-disabled", @"activity-disabled", nil];
@@ -93,10 +69,8 @@ id currentButton;
 	for (NSString *singleImageFilename in imageNames) {
 		CGRect buttonViewFrame = CGRectMake(contentOffSet, 6, 48, 34);
         UIButton *customButton = [[UIButton alloc] initWithFrame:CGRectMake(contentOffSet, 6, 48, 34)];
-//		UIButton *customButton = [UIButton buttonWithType:UIButtonTypeCustom];
 		[customButton setBackgroundImage:[UIImage imageNamed:singleImageFilename] forState:UIControlStateNormal];
         [customButton setBackgroundImage:[UIImage imageNamed:singleImageFilename] forState:UIControlStateHighlighted];
-//        NSLog(@"%@", singleImageFilename);
 		[customButton addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
 		customButton.frame = buttonViewFrame;
 		customButton.tag = count;
