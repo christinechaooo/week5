@@ -8,6 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol ActivityViewDelegate;
+
 @interface ActivityViewController : UIViewController
 
+@property (nonatomic, weak) id<ActivityViewDelegate> delegate;
+
 @end
+
+@protocol ActivityViewDelegate <NSObject>
+
+-(void)didHitLoginButton;
+
+@end
+

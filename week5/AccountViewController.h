@@ -8,6 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol AccountViewDelegate;
+
 @interface AccountViewController : UIViewController
+
+@property (nonatomic, weak) id<AccountViewDelegate> delegate;
+
+@end
+
+@protocol AccountViewDelegate <NSObject>
+
+-(void)didHitLoginButton;
 
 @end

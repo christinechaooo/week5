@@ -52,15 +52,16 @@
     self.loadingAnimationView = [[UIImageView alloc] initWithFrame:CGRectMake(130, 260, 61, 19)];
     self.loadingAnimationView.animationImages = loadingImages;
     self.loadingAnimationView.animationDuration = 0.6;
-    
-    if(!self.timer) {
-        self.timer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(onTimer:) userInfo:nil repeats:NO];
-    }
          
     [self.view addSubview:self.loadingAnimationView];
     [self.loadingAnimationView startAnimating];
-//    [self.view addSubview:self.scrollView];
     [self.view addSubview:statusBarView];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    if(!self.timer) {
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(onTimer:) userInfo:nil repeats:NO];
+    }
 }
 
 - (void)didReceiveMemoryWarning

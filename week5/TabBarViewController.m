@@ -19,6 +19,9 @@
 @property (nonatomic, strong) UIView *mainView;
 @property (nonatomic, strong) UIView *currentView;
 @property (nonatomic, strong) UIImageView *tooltip;
+@property (nonatomic, strong) UIView *logInView;
+@property (nonatomic, strong) UIImageView *logInTF;
+@property (nonatomic, strong) UITextField *emailTF;
 @property (nonatomic, strong) HomeViewController *homeViewController;
 @property (nonatomic, strong) SearchViewController *searchViewController;
 @property (nonatomic, strong) CreateViewController *createViewController;
@@ -29,6 +32,9 @@
 - (void)tooltipShow;
 - (void)tooltipHide;
 - (void)checkTooltipShow;
+- (void)didHitLoginButton;
+- (void)onLogInCancel:(id)sender;
+- (void)hideKeyboard;
 
 @end
 
@@ -41,12 +47,16 @@ id currentButton;
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.homeViewController = [[HomeViewController alloc] init];
+        self.homeViewController.delegate = self;
+        
         self.searchViewController = [[SearchViewController alloc] init];
         self.createViewController = [[CreateViewController alloc] init];
-        self.accountViewController = [[AccountViewController alloc] init];
-        self.activityViewController = [[ActivityViewController alloc] init];
-//        UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:self.trendingViewController];
         
+        self.accountViewController = [[AccountViewController alloc] init];
+        self.accountViewController.delegate = self;
+        
+        self.activityViewController = [[ActivityViewController alloc] init];
+        self.activityViewController.delegate = self;
     }
     return self;
 }
@@ -92,10 +102,57 @@ id currentButton;
     self.isTooltipShow = YES;
     [self tooltipShow];
     
+    self.logInView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 568)];
+    self.logInView.backgroundColor = [UIColor colorWithRed:51.0/255.0 green:70.0/255.0 blue:93.0/255.0 alpha:0];
+    
+    UIImage *logInImg = [UIImage imageNamed:@"logInTF"];
+    self.logInTF = [[UIImageView alloc] initWithFrame:CGRectMake(10, 189, 300, 132)];
+    self.logInTF.image = logInImg;
+    self.logInTF.layer.opacity = 0;
+    self.logInTF.userInteractionEnabled = YES;
+    
+    self.emailTF = [[UITextField alloc] initWithFrame:CGRectMake(15, 1, 270, 44)];
+    self.emailTF.placeholder = @"email";
+    self.emailTF.font = [UIFont systemFontOfSize:14];
+    self.emailTF.keyboardType = UIKeyboardTypeEmailAddress;
+    self.emailTF.clearButtonMode = UITextFieldViewModeWhileEditing;
+    //[self.emailTF addTarget:self action:@selector(textFieldChanged:) forControlEvents:UIControlEventEditingChanged];
+    
+    UITextField *passwordTF = [[UITextField alloc] initWithFrame:CGRectMake(15, 45, 270, 44)];
+    passwordTF.placeholder = @"password";
+    passwordTF.font = [UIFont systemFontOfSize:14];
+    passwordTF.secureTextEntry = YES;
+    passwordTF.clearButtonMode = UITextFieldViewModeWhileEditing;
+    
+    UIButton *cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    cancelButton.frame = CGRectMake(0, 88, 150, 44);
+    [cancelButton addTarget:self action:@selector(onLogInCancel:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.logInTF addSubview:self.emailTF];
+    [self.logInTF addSubview:passwordTF];
+    [self.logInTF addSubview:cancelButton];
+    [self.logInView addSubview:self.logInTF];
+    
     [self.view addSubview:self.mainView];
     [self.view addSubview:tabBarView];
     [self.view addSubview:self.tooltip];
     
+}
+
+-(void)didHitLoginButton {
+    NSLog(@"LOG IN!!!!");
+    
+    [self.emailTF becomeFirstResponder];
+    [self.view addSubview:self.logInView];
+    [UIView animateWithDuration:0.6 delay:0 usingSpringWithDamping:0.6 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        self.logInTF.center = CGPointMake(10 + self.logInTF.frame.size.width / 2, 109 + self.logInTF.frame.size.height / 2);
+    } completion:nil];
+    
+    [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        self.logInView.backgroundColor = [UIColor colorWithRed:51.0/255.0 green:70.0/255.0 blue:93.0/255.0 alpha:0.98];
+        
+        self.logInTF.layer.opacity = 1;
+    } completion:nil];
 }
 
 - (void)buttonAction:(id)sender {
@@ -137,6 +194,22 @@ id currentButton;
             [self.mainView addSubview:self.activityViewController.view];
             break;
     }
+}
+
+- (void)onLogInCancel:(id)sender {
+    [self hideKeyboard];
+    
+    [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        self.logInView.backgroundColor = [UIColor colorWithRed:51.0/255.0 green:70.0/255.0 blue:93.0/255.0 alpha:0];
+        self.logInTF.center = CGPointMake(self.logInTF.frame.origin.x + self.logInTF.frame.size.width / 2, self.logInTF.frame.origin.y + self.logInTF.frame.size.height / 2  + 80);
+        self.logInTF.layer.opacity = 0;
+    } completion:^(BOOL finished) {
+        [self.logInView removeFromSuperview];
+    }];
+}
+
+- (void)hideKeyboard {
+    [self.view endEditing:YES];
 }
 
 - (void)checkTooltipShow {

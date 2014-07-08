@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HomeViewController.h"
+#import "AccountViewController.h"
+#import "ActivityViewController.h"
 
-@interface TabBarViewController : UIViewController
+@interface TabBarViewController : UIViewController <HomeViewDelegate, AccountViewDelegate, ActivityViewDelegate>
 
 @end

@@ -8,6 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol HomeViewDelegate;
+
 @interface HomeViewController : UIViewController
+
+@property (nonatomic, weak) id<HomeViewDelegate> delegate;
+
+@end
+
+@protocol HomeViewDelegate <NSObject>
+
+-(void)didHitLoginButton;
 
 @end

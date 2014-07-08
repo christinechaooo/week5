@@ -10,6 +10,8 @@
 
 @interface ActivityViewController ()
 
+- (void)onLogIn:(id)sender;
+
 @end
 
 @implementation ActivityViewController
@@ -32,7 +34,17 @@
     imgView.image = view;
     scrollView.contentSize = imgView.frame.size;
     [scrollView addSubview:imgView];
+    
+    UIButton *logInButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    logInButton.frame = CGRectMake(170, 360, 100, 44);
+    [logInButton addTarget:self action:@selector(onLogIn:) forControlEvents:UIControlEventTouchUpInside];
+    
     [self.view addSubview:scrollView];
+    [self.view addSubview:logInButton];
+}
+
+- (void)onLogIn:(id)sender {
+    [self.delegate didHitLoginButton];
 }
 
 - (void)didReceiveMemoryWarning

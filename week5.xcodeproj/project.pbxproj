@@ -25,7 +25,6 @@
 		77D5CE66196779D70023DFFD /* CreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77D5CE65196779D70023DFFD /* CreateViewController.m */; };
 		77D5CE69196779E20023DFFD /* AccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77D5CE68196779E20023DFFD /* AccountViewController.m */; };
 		77D5CE6C196779EC0023DFFD /* ActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77D5CE6B196779EC0023DFFD /* ActivityViewController.m */; };
-		77D5CE6F196884960023DFFD /* LogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77D5CE6E196884960023DFFD /* LogInViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,8 +66,6 @@
 		77D5CE68196779E20023DFFD /* AccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountViewController.m; sourceTree = "<group>"; };
 		77D5CE6A196779EC0023DFFD /* ActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityViewController.h; sourceTree = "<group>"; };
 		77D5CE6B196779EC0023DFFD /* ActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityViewController.m; sourceTree = "<group>"; };
-		77D5CE6D196884960023DFFD /* LogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogInViewController.h; sourceTree = "<group>"; };
-		77D5CE6E196884960023DFFD /* LogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogInViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,8 +141,6 @@
 				77D5CE68196779E20023DFFD /* AccountViewController.m */,
 				77D5CE6A196779EC0023DFFD /* ActivityViewController.h */,
 				77D5CE6B196779EC0023DFFD /* ActivityViewController.m */,
-				77D5CE6D196884960023DFFD /* LogInViewController.h */,
-				77D5CE6E196884960023DFFD /* LogInViewController.m */,
 			);
 			path = week5;
 			sourceTree = "<group>";
@@ -226,6 +221,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Christine Chao";
 				TargetAttributes = {
+					773D2B531966759F00257712 = {
+						DevelopmentTeam = X6GA4YWLT3;
+					};
 					773D2B6E196675A000257712 = {
 						TestTargetID = 773D2B531966759F00257712;
 					};
@@ -279,7 +277,6 @@
 				77D5CE69196779E20023DFFD /* AccountViewController.m in Sources */,
 				77D5CE66196779D70023DFFD /* CreateViewController.m in Sources */,
 				77D5CE63196779CB0023DFFD /* SearchViewController.m in Sources */,
-				77D5CE6F196884960023DFFD /* LogInViewController.m in Sources */,
 				77D5CE6C196779EC0023DFFD /* ActivityViewController.m in Sources */,
 				773D2B64196675A000257712 /* main.m in Sources */,
 				77D5CE60196779BF0023DFFD /* HomeViewController.m in Sources */,
@@ -401,6 +398,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "week5/week5-Prefix.pch";
 				INFOPLIST_FILE = "week5/week5-Info.plist";
@@ -414,6 +412,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "week5/week5-Prefix.pch";
 				INFOPLIST_FILE = "week5/week5-Info.plist";
