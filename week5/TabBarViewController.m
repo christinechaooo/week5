@@ -35,6 +35,8 @@
 - (void)didHitLoginButton;
 - (void)onLogInCancel:(id)sender;
 - (void)hideKeyboard;
+- (void)pauseTooltip;
+- (void)resumeTooltip;
 
 @end
 
@@ -50,7 +52,9 @@ id currentButton;
         self.homeViewController.delegate = self;
         
         self.searchViewController = [[SearchViewController alloc] init];
+        
         self.createViewController = [[CreateViewController alloc] init];
+        self.createViewController.delegate = self;
         
         self.accountViewController = [[AccountViewController alloc] init];
         self.accountViewController.delegate = self;
@@ -175,8 +179,8 @@ id currentButton;
             [self.mainView addSubview:self.searchViewController.view];
             break;
         case 3:
+            [self pauseTooltip];
             [sender setBackgroundImage:[UIImage imageNamed:@"create"] forState:UIControlStateSelected];
-            [self.createViewController transitionIn];
             [self.view addSubview:self.createViewController.view];
             break;
         case 4:
@@ -221,10 +225,25 @@ id currentButton;
     }
 }
 
+- (void)pauseTooltip {
+    [UIView animateWithDuration:1 delay:0 options: UIViewAnimationOptionCurveEaseOut animations:^{
+        self.tooltip.center = CGPointMake(self.tooltip.center.x, 467 + self.tooltip.frame.size.height / 2);
+    } completion:^(BOOL finished) {
+        [self.tooltip.layer removeAllAnimations];
+    }];
+}
+
+- (void)resumeTooltip {
+    [UIView animateWithDuration:1 delay:0 options: UIViewAnimationOptionCurveEaseOut |  UIViewAnimationOptionRepeat | UIViewAnimationOptionAutoreverse animations:^{
+        self.tooltip.center = CGPointMake(self.tooltip.center.x, 467 + self.tooltip.frame.size.height / 2 - 5);
+    } completion:nil];
+}
+
 - (void)tooltipShow {
     [self.view addSubview:self.tooltip];
+    [UIView setAnimationBeginsFromCurrentState:YES];
     [UIView animateWithDuration:1 delay:0 options: UIViewAnimationOptionCurveEaseOut |  UIViewAnimationOptionRepeat | UIViewAnimationOptionAutoreverse animations:^{
-        self.tooltip.center = CGPointMake(self.tooltip.center.x, self.tooltip.center.y - 5);
+        self.tooltip.center = CGPointMake(self.tooltip.center.x, 467 + self.tooltip.frame.size.height / 2 - 5);
     } completion:nil];
 }
 

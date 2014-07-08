@@ -8,8 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol CreateViewDelegate;
+
 @interface CreateViewController : UIViewController
 
-- (void)transitionIn;
+@property (nonatomic, weak) id<CreateViewDelegate> delegate;
 
 @end
+
+@protocol CreateViewDelegate <NSObject>
+
+- (void)resumeTooltip;
+
+@end
+
+
+

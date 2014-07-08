@@ -18,6 +18,8 @@
 
 @protocol HomeViewDelegate <NSObject>
 
--(void)didHitLoginButton;
+- (void)didHitLoginButton;
+- (void)pauseTooltip;
+- (void)resumeTooltip;
 
 @end

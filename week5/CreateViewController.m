@@ -89,7 +89,9 @@
     }
     
     [self.view addSubview:self.dismissButton];
-    
+}
+
+- (void) viewDidAppear:(BOOL)animated {
     [self transitionIn];
 }
 
@@ -130,6 +132,7 @@
         self.backgroundRect.layer.opacity = 0;
     } completion:^(BOOL finished) {
         [self.view removeFromSuperview];
+        [self.delegate resumeTooltip];
     }];
     
 }

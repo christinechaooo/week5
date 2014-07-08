@@ -10,7 +10,8 @@
 #import "HomeViewController.h"
 #import "AccountViewController.h"
 #import "ActivityViewController.h"
+#import "CreateViewController.h"
 
-@interface TabBarViewController : UIViewController <HomeViewDelegate, AccountViewDelegate, ActivityViewDelegate>
+@interface TabBarViewController : UIViewController <HomeViewDelegate, AccountViewDelegate, ActivityViewDelegate, CreateViewDelegate>
 
 @end
