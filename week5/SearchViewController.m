@@ -41,7 +41,7 @@
     UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 1237)];
     imgView.image = view;
     self.scrollView.contentSize = imgView.frame.size;
-    self.scrollView.layer.opacity = 0;
+    self.scrollView.alpha = 0;
     [self.scrollView addSubview:imgView];
     
     NSArray *loadingImageNames = @[@"loading-1", @"loading-2", @"loading-3"];
@@ -56,6 +56,7 @@
          
     [self.view addSubview:self.loadingAnimationView];
     [self.loadingAnimationView startAnimating];
+    [self.view addSubview:self.scrollView];
     [self.view addSubview:statusBarView];
 }
 
@@ -73,9 +74,8 @@
 
 - (void)onTimer:(id)sender {
     NSLog(@"!!");
-    [self.view addSubview:self.scrollView];
     [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        self.scrollView.layer.opacity = 1;
+        self.scrollView.alpha = 1;
     } completion:nil];
     
     [self.loadingAnimationView removeFromSuperview];
